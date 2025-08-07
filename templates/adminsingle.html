@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Analytics - Traker</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Background styling to match the design */
+            background-color: #0B0E1E;
+            background-image: url('../static/images/dark-gradient-background-with-copy-space_53876-99548.avif');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Custom class for the glassmorphism effect */
+        .glass-card {
+            background-color: rgba(30, 35, 70, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar for a better look */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4A5568;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+    </style>
+</head>
+
+<body class="text-gray-200">
+
+    <div class="container mx-auto px-4 py-6">
+
+        <!-- Header -->
+        <header class="glass-card rounded-xl p-4 flex justify-between items-center mb-12">
+            <a href="{% url 'manager:adminpanel' %}" class="text-2xl font-bold tracking-wider text-white">Traker</a>
+           
+            <a href="{% url 'users:login' %}"> <button
+                    class="bg-blue-500/50 hover:bg-blue-500/80 text-white font-semibold py-2 px-5 rounded-lg transition-colors">
+                    Logout
+                </button></a>
+        </header>
+
+
+
+        <div class="max-w-2xl mx-auto bg-gray-800 rounded-xl p-6">
+            <h1 class="text-3xl font-bold mb-4">Link Details</h1>
+            <p><strong>Original Link:</strong> {{ link.url }}</p>
+            <p><strong>Created Link:</strong> {{ request.build_absolute_uri }}/track/{{ link.id }}/</p>
+            <p><strong>Category:</strong> {{ link.category }}</p>
+            <p><strong>Click Count:</strong> {{ link.click_count }}</p>
+            <p><strong>Created At:</strong> {{ link.created_at }}</p>
+            <a href="{% url 'manager:adminpanel' %}" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-lg">
+                Back to Admin Panel
+            </a>
+        </div>
+
+
+
+
+
+</body>
+
+</html>
