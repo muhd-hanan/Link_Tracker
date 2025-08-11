@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
-from users.models import User, Customer  # Make sure this matches your models
+from users.models import User, Customer 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -23,7 +23,7 @@ def login_view(request):
         if user is not None:
             auth_login(request, user)
 
-            # Redirect based on role
+           
             if user.is_superuser or getattr(user, 'is_manager', False):
                 return redirect('manager:adminpanel')
             else:
