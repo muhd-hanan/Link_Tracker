@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+
 
 
 import dj_database_url
@@ -87,9 +87,12 @@ WSGI_APPLICATION = 'linktraker.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),  # Get from Render env var
+        conn_max_age=600,
+        ssl_require=True  # For secure connection to Render PostgreSQL
+    )
 }
-
 
 
 # postgresql://linktraker_user:xVtABrrsZDcNSGVNT6ZFE7C2QDcUK5rA@dpg-d2ab6ep5pdvs73ajachg-a.oregon-postgres.render.com/linktraker
