@@ -21,7 +21,7 @@ def create_admin(request):
     User = get_user_model()
     try:
         User.objects.create_superuser(
-            username="admin",
+          
             email="hananmuhdmkd@gmail.com",
             password="907255"
         )
