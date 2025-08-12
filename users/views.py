@@ -17,18 +17,6 @@ from django.db import IntegrityError
 
 
 
-def create_admin(request):
-    User = get_user_model()
-    try:
-        User.objects.create_superuser(
-          
-            email="hananmuhdmkd@gmail.com",
-            password="907255"
-        )
-        return HttpResponse("✅ Superuser created")
-    except IntegrityError:
-        return HttpResponse("⚠️ Superuser already exists")
-
 
 def login_view(request):
     if request.method == 'POST':
