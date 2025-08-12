@@ -10,8 +10,24 @@ from django.http import JsonResponse
 from django.urls import reverse
 from .models import TrackedLink
 from django.contrib import messages
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+from django.db import IntegrityError
 
 
+
+
+def create_admin(request):
+    User = get_user_model()
+    try:
+        User.objects.create_superuser(
+            username="admin",
+            email="hananmuhdmkd@gmail.com",
+            password="907255"
+        )
+        return HttpResponse("✅ Superuser created")
+    except IntegrityError:
+        return HttpResponse("⚠️ Superuser already exists")
 
 
 def login_view(request):
