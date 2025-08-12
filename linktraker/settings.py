@@ -19,7 +19,12 @@ import dj_database_url
 
 
 DEBUG = False
-ALLOWED_HOSTS = ['your-render-app-name.onrender.com']
+
+ALLOWED_HOSTS = [
+    'link-tracker-3.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
