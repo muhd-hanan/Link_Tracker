@@ -189,7 +189,7 @@
                         <thead>
                             <tr class="border-b border-gray-600 ">
                                 <th class="p-3">Original Link</th>
-                                <th class="p-3">created Link</th>
+                               
                                 <th class="p-3">Category</th>
                                 <th class="p-3 text-right">Clicks</th>
                                 <th class="p-3 text-right">Actions</th>
@@ -200,14 +200,7 @@
                             {% for link in links %}
                             <tr class="border-b border-gray-700/50">
                                 <td class="p-3">{{ link.url }}</td>
-                                <td class="p-3">
-                                   
-                                    <a href="{% url 'users:track_click' link.id %}" target="_blank"
-                                        class="text-green-400 underline">
-                                        {{ request.build_absolute_uri }}{% url 'users:track_click' link.id %}
-                                    </a>
-                                   
-                                </td>
+                               
 
                                 <!-- ✅ Correct Category Display -->
                                 <td class="p-3">
