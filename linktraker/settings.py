@@ -13,11 +13,13 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+
+
 import dj_database_url
 
 
+DEBUG = False
 ALLOWED_HOSTS = ['*']
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,14 +86,7 @@ WSGI_APPLICATION = 'linktraker.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        "ENGINE" : "django.db.backends.postgresql_psycopg2",
-        "NAME" : "link",
-        "HOST" : "localhost",
-        "USER" : "hanan",
-        "PASSWORD" : "1234",
-        "PORT" : "5432"
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 
@@ -147,3 +142,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+
+
